@@ -15,7 +15,7 @@ void ESPHandler::setManualState(QString state)
 {
     QNetworkAccessManager* manager = new QNetworkAccessManager();
 
-    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
+    connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
     {
         if (reply->error())
         {
@@ -48,7 +48,7 @@ void ESPHandler::setTargetTemp(QString value)
 {
     QNetworkAccessManager* manager = new QNetworkAccessManager();
 
-    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
+    connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
     {
         if (reply->error())
         {
@@ -102,7 +102,7 @@ void ESPHandler::requestStatus()
 {
     QNetworkAccessManager* manager = new QNetworkAccessManager();
 
-    QObject::connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
+    connect(manager, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply)
     {
         if (reply->error())
         {
