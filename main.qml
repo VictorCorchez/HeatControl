@@ -1,9 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
-
-import ESP 1.0
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
+import QtQuick.Layouts
+import ESP
 
 ApplicationWindow
 {
@@ -79,17 +78,8 @@ ApplicationWindow
                 Layout.margins: 10
                 Layout.topMargin: 5
                 Layout.bottomMargin: 5
-                text: "Current humidity: 0.0%"
+                text: "Current humidity: " + ESP.currentHumidity
                 font.bold: true
-
-                Connections
-                {
-                    target: ESP
-                    function onCurrentHumidityChanged()
-                    {
-                        currentHumidity.text = "Current humidity: " + ESP.currentHumidity;
-                    }
-                }
             }
 
             Text
@@ -99,17 +89,8 @@ ApplicationWindow
                 Layout.margins: 10
                 Layout.topMargin: 5
                 Layout.bottomMargin: 5
-                text: "Current temperature: 0.0 \u00B0C"
+                text: "Current temperature: " + ESP.currentTemp + " \u00B0C"
                 font.bold: true
-
-                Connections
-                {
-                    target: ESP
-                    function onCurrentTempChanged()
-                    {
-                        currentTemp.text = "Current temperature: " + ESP.currentTemp + " \u00B0C";
-                    }
-                }
             }
 
             RowLayout
@@ -155,14 +136,6 @@ ApplicationWindow
                             top: 30.0
                         }
 
-                        Connections
-                        {
-                            target: ESP
-                            function onTargetTempChanged()
-                            {
-                                txtInput.text = ESP.targetTemp;
-                            }
-                        }
                         onFocusChanged:
                         {
                             if (txtInput.focus)
@@ -186,7 +159,6 @@ ApplicationWindow
                 Button
                 {
                     text: "SET"
-                    Layout.alignment: Qt.AlignRight
 
                     onClicked:
                     {
@@ -203,7 +175,6 @@ ApplicationWindow
                 Button
                 {
                     text: "RESET"
-                    Layout.alignment: Qt.AlignRight
 
                     onClicked:
                     {
@@ -215,6 +186,7 @@ ApplicationWindow
                     }
                 }
             }
+
             Rectangle
             {
                 id: sliderLayout
